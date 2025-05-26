@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mie Ayam</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <h1>Mie Ayam Cilukba</h1>
+    <div class="datetime" id="datetime"></div>
+    <div class="parent">
+        <div class="Pengumuman"><span class="marquee">Hanya menerima pemesanan lewat GoFood dan juga WhatsApp.  Terimakasih sudah berkunjung </span></div>
+        <div class="Promo">
+            <div class="slider">
+                <button class="prev">&#10094;</button>
+                <img src="img/mieoriginal.jpg" alt="Mie Ayam Biasa" class="slide active">
+                <img src="img/miespesial.jpg"alt="Mie Ayam Spesial" class="slide">
+                <button class="next">&#10095;</button>
+            </div>
+            Promo: Diskon 20% untuk hari ini.
+        </div>
+        <div class="MenuList">  
+            <ul class="menu-list">
+                <P>List Makanan:</P>
+                <li><span class="menu-item">Mie Ayam Original</span> <span class="menu-price">Rp 20.000</span></li>
+                <li><span class="menu-item">Mie Ayam Biasa</span> <span class="menu-price">Rp 22.000</span></li>
+                <li><span class="menu-item">Mie Ayam Spesial</span> <span class="menu-price">Rp 28.000</span></li>
+                <li><span class="menu-item">Mie Ayam Bakso</span> <span class="menu-price">Rp 30.000</span></li>
+                <li><span class="menu-item">Mie Ayam Pangsit</span> <span class="menu-price">Rp 27.000</span></li>
+                <p>List Minuman:</p>
+                <li><span class="menu-item">Es Teh</span> <span class="menu-price">Rp 5.000</span></li>
+                <li><span class="menu-item">Es Jeruk</span> <span class="menu-price">Rp 6.000</span></li>
+                <li><span class="menu-item">Air Mineral</span> <span class="menu-price">Rp 3.000</span></li>
+                <li><span class="menu-item">Es Kopi</span> <span class="menu-price">Rp 7.000</span></li>
+                <li><span class="menu-item">Es Susu</span> <span class="menu-price">Rp 8.000</span></li>
+            </ul>
+        </div>
+        <div class="Review">Buka Jam 10:00 - 22:00 WIB
+            <P>Buka Setiap Hari. Tanggal Merah Libur</P>
+        </div>
+        <div class="Menu">
+            <button id="pesanBtn" class="pesanBtn">Pesan</button>
+            <div id="menuPilihan" style="display:none; margin-top:10px;">
+                <p>Pilih Menu Pesanan:</p>
+                <ul class="menu-list">
+                    <li><label><input type="checkbox" value="Mie Ayam Original"> Mie Ayam Original <span class="menu-price">Rp 20.000</span></label></li>
+                    <li><label><input type="checkbox" value="Mie Ayam Biasa"> Mie Ayam Biasa <span class="menu-price">Rp 22.000</span></label></li>
+                    <li><label><input type="checkbox" value="Mie Ayam Spesial"> Mie Ayam Spesial <span class="menu-price">Rp 28.000</span></label></li>
+                    <li><label><input type="checkbox" value="Mie Ayam Bakso"> Mie Ayam Bakso <span class="menu-price">Rp 30.000</span></label></li>
+                    <li><label><input type="checkbox" value="Mie Ayam Pangsit"> Mie Ayam Pangsit <span class="menu-price">Rp 27.000</span></label></li>
+                </ul>
+                <button id="kirimPesanan">Kirim Pesanan</button>
+            </div>
+        </div>
+        <div class="MetodeKonfirmasi metode-box">
+            <label><b>Pilih Metode Konfirmasi Pesanan:</b></label><br>
+            <label><input type="radio" name="metodeKonfirmasi" value="aplikasi" checked> Aplikasi Ketiga</label>
+            <label style="margin-left:10px;"><input type="radio" name="metodeKonfirmasi" value="wa"> WA Admin</label>
+        </div>
+        
+    <script>
+       let current = 0;
+const slides = document.querySelectorAll('.slider .slide');
+const prevBtn = document.querySelector('.slider .prev');
+const nextBtn = document.querySelector('.slider .next');
+let interval = setInterval(nextSlide, 2000);
+
+function showSlide(idx) {
+    slides[current].classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+}
+function nextSlide() {
+    showSlide(current + 1);
+}
+function prevSlide() {
+    showSlide(current - 1);
+}
+nextBtn.addEventListener('click', () => {
+    nextSlide();
+    resetInterval();
+});
+prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetInterval();
+});
+function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 2000);
+}
+
+// Tampilkan jam dan tanggal
+function updateDateTime() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateStr = now.toLocaleDateString('id-ID', options);
+    const timeStr = now.toLocaleTimeString('id-ID');
+    document.getElementById('datetime').innerHTML = dateStr + ' | ' + timeStr;
+}
+setInterval(updateDateTime, 1000);
+updateDateTime();
+
+// Fitur tombol Pesan untuk menampilkan menu pilihan
+const pesanBtn = document.getElementById('pesanBtn');
+const menuPilihan = document.getElementById('menuPilihan');
+const menuDiv = document.querySelector('.Menu');
+if (pesanBtn && menuDiv) {
+  pesanBtn.addEventListener('click', function() {
+    const metode = document.querySelector('input[name="metodeKonfirmasi"]:checked').value;
+    if (metode === 'aplikasi') {
+      window.location.href = 'https://gofood.link/aplikasi-ketiga';
+    } else {
+      window.location.href = 'ListPesanan.html';
+    }
+  });
+}
+    </script>
+</body>
+</html>

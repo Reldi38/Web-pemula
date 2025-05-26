@@ -1,0 +1,206 @@
+body {
+    background: linear-gradient(to bottom right, #a2d9ff, #ffffff);
+    font-family: 'Poppins', Arial, sans-serif;
+}
+.pesan-menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+.form-group {
+    background: #f8fbff;
+    padding: 12px 16px;
+    border: 2px solid #222;
+    border-radius: 12px;
+    max-width: 350px;
+    min-width: 220px;
+    margin-bottom: 20px;
+    margin: 0;
+    box-sizing: border-box;
+}
+.form-group label {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 4px;
+    display: block;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1.5px solid #a2d9ff;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+.menu-section {
+    background: #f8fbff;
+    border: 2px solid #222;
+    border-radius: 12px;
+    padding: 16px 12px;
+    max-width: 400px;
+    min-width: 220px;
+    margin: 0;
+    box-sizing: border-box;
+}
+.menu-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 16px 0 10px 0;
+}
+.menu-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+.menu-list li {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+}
+.menu-list label {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    font-size: 1.08em;
+    font-weight: 400;
+    min-width: 120px;
+}
+.menu-price {
+    margin-left: 10px;
+    min-width: 90px;
+    text-align: right;
+}
+.btn-kembali {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 10px 24px;
+    font-size: 1em;
+    background: #a2d9ff;
+    color: #222;
+    border: 2px solid #222;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', Arial, sans-serif;
+    transition: background 0.2s;
+}
+.btn-kembali:hover {
+    background: #7fc8f8;
+}
+button#kirimPesanan {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 10px 24px;
+    font-size: 1em;
+    background: #a2d9ff;
+    color: #222;
+    border: 2px solid #222;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', Arial, sans-serif;
+    transition: background 0.2s;
+}
+button#kirimPesanan:hover {
+    background: #7fc8f8;
+}
+.btn-lanjut {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 10px 24px;
+    font-size: 1em;
+    background: #a2d9ff;
+    color: #222;
+    border: 2px solid #222;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', Arial, sans-serif;
+    transition: background 0.2s;
+}
+.btn-lanjut:hover {
+    background: #7fc8f8;
+}
+.qty-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #e3f2fd;
+  border-radius: 28px;
+  padding: 6px 22px;
+  margin-left: 2px;
+  margin-right: 2px;
+  min-width: 140px;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.07);
+}
+.qty-btn {
+  width: 36px;
+  height: 36px;
+  font-size: 1.3em;
+  font-weight: bold;
+  background: #2196f3;
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 1px 4px rgba(33,150,243,0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.qty-btn:active, .qty-btn:hover {
+  background: #1769aa;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.18);
+}
+.qty-input {
+  width: 48px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-size: 1.15em;
+  outline: none;
+  appearance: textfield;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  font-weight: 600;
+  color: #222;
+}
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+@media (max-width: 900px) {
+    .pesan-menu-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+    .form-group, .menu-section {
+        max-width: 98vw;
+        min-width: unset;
+    }
+}
+@media (max-width: 600px) {
+  .menu-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .qty-group {
+    margin-top: 4px;
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
+    .form-group, .menu-section {
+        max-width: 98vw;
+        padding: 8px 4px;
+    }
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.95em;
+        padding: 6px;
+    }
+}
